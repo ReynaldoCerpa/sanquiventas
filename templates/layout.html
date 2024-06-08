@@ -13,7 +13,17 @@
 </head>
 <body>
     <nav>
-
+        <a href="/">Inicio</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'posts:posts_list' %}">Publicaciones</a>
+        {% else %}
+            <a href="{% url 'users:login' %}">Iniciar sesión</a>
+            <a href="{% url 'users:register' %}">Registrarse</a>
+        {% endif %}
+        <form style='display: inline-block' action="{% url 'users:logout' %}" method='post'>
+            {% csrf_token %}
+            <button>Cerrar sesión</button>
+        </form>
     </nav>
     <main>
         {% block content %}

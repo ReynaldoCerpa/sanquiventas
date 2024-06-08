@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Publicaciones
+{% endblock title %}
+
+{% block content %}
+    <h1>Publicaciones</h1>
+    {% if not posts %}
+        <h3>No hay publicaciones</h3>
+    {% endif %}
+    {% for post in posts %}
+        <article>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+        </article>
+    {% endfor %}
+{% endblock content %}
